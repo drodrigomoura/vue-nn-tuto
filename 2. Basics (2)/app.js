@@ -12,9 +12,16 @@ const app = Vue.createApp({
   },
   methods: {
     toggleShowBooks(){
-      
       this.showBooks = !this.showBooks
     },
+    toggleFav(book){
+      // this.books.forEach(el => {
+      //   if(el.title === book.title){
+      //     el.isFav = !el.isFav
+      //   }
+      // })
+      book.isFav = !book.isFav
+    }
   }
 })
 
