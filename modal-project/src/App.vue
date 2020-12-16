@@ -4,7 +4,7 @@
   <div v-if="showModal">
     <Modal :header="header" :text="text" theme="sale" @close="toggleModal"/>
   </div>
-  <button @click="toggleModal">Open Modal</button>
+  <button @click.ctrl="toggleModal">Open Modal (ctrl)</button>
 </template>
 
 <script>
