@@ -2,7 +2,14 @@
   <h1>{{ title }}</h1>
   <p>Welcome...</p>
   <div v-if="showModal">
-    <Modal :header="header" :text="text" theme="sale" @close="toggleModal"/>
+    <Modal theme="" @close="toggleModal">
+      <template v-slot:links>
+        <a href="#">Sign up now</a>
+        <a href="#">more info</a>
+      </template>
+      <h1>{{ header }}</h1>
+      <p>{{ text }}</p>
+    </Modal>
   </div>
   <button @click.ctrl="toggleModal">Open Modal (ctrl)</button>
 </template>
@@ -24,11 +31,11 @@ export default {
     };
   },
 
-  methods:{
-    toggleModal(){
+  methods: {
+    toggleModal() {
       this.showModal = !this.showModal;
-    }
-  }
+    },
+  },
 };
 </script>
 
