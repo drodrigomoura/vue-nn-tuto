@@ -13,12 +13,14 @@
       margin: 20px auto;
     }
 
-    p, h3, ul {
+    p,
+    h3,
+    ul {
       margin: 0;
       padding: 0;
     }
 
-    li{
+    li {
       list-style-type: none;
       background: #fff;
       margin: 20px auto;
@@ -29,7 +31,7 @@
       justify-content: space-between;
     }
 
-    li.fav{
+    li.fav {
       background: #ff9ed2;
       color: white;
     }
@@ -41,9 +43,12 @@
   <div id="app">
     <!-- attribute  binding -->
     <!-- <a :href="url">The best website ever</a> -->
+
+    <p>{{ filteredBooks }}</p>
+
     <div v-if="showBooks">
       <ul>
-        <li v-for="book in books" :class="{ fav: book.isFav }" @click="toggleFav(book)">
+        <li v-for="book in filteredBooks" :class="{ fav: book.isFav }" @click="toggleFav(book)">
           <img :src="book.img" :alt="book.title">
           <h3>{{ book.title }}</h3>
           <p>{{ book.author }}</p>
