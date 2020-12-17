@@ -12,6 +12,17 @@
     </Modal>
   </div>
   <button @click.ctrl="toggleModal">Open Modal (ctrl)</button>
+  <div v-if="showModalTwo">
+    <Modal theme="" @close="toggleModalTwo">
+      <template v-slot:links>
+        <a href="#">Sign up now</a>
+        <a href="#">more info</a>
+      </template>
+      <h1>Modal Two</h1>
+      <p>I'm crazy</p>
+    </Modal>
+  </div>
+  <button @click.ctrl="toggleModalTwo">Open Modal 2 (ctrl)</button>
 </template>
 
 <script>
@@ -28,12 +39,16 @@ export default {
       header: "Sign Up for the Giveaway",
       text: "Grab your ninja swag for half price!",
       showModal: false,
+      showModalTwo: false,
     };
   },
 
   methods: {
     toggleModal() {
       this.showModal = !this.showModal;
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo;
     },
   },
 };
