@@ -1,9 +1,9 @@
 <template>
   <form>
     <label>Email:</label>
-    <input type="email" required v-model="email">
+    <input type="email" required v-model="email" />
     <label>Password:</label>
-    <input type="password" required v-model="password">
+    <input type="password" required v-model="password" />
 
     <label>Role:</label>
     <select v-model="role">
@@ -11,8 +11,14 @@
       <option value="designer">Web Designer</option>
     </select>
 
+    <label>Skills:</label>
+    <input type="text" v-model="tempSkill" @keyup.alt="addSkill" />
+    <div v-for="skill in skills" :key="skill" class="pill">
+      {{ skill }}
+    </div>
+
     <div class="terms">
-      <input type="checkbox" required v-model="terms">
+      <input type="checkbox" required v-model="terms" />
       <label>Accept terms and conditions</label>
     </div>
 
@@ -29,21 +35,32 @@
       <label>Eli</label>
     </div> -->
   </form>
-  <!-- {{names}} -->
 </template>
 
 <script>
 export default {
-  name: 'SignupForm',
-  data(){
+  name: "SignupForm",
+  data() {
     return {
-      email: '',
-      password: '',
-      role: 'developer',
+      email: "",
+      password: "",
+      role: "developer",
       terms: false,
       // names: [],
-    }
-  }
+      tempSkill: "",
+      skills: [],
+    };
+  },
+  methods: {
+    addSkill(e) {
+      if (e.key === "," && this.tempSkill) {
+        if(!this.skills.includes(this.tempSkill)){
+          this.skills.push(this.tempSkill);
+        }
+        this.tempSkill = "";
+      }
+    },
+  },
 };
 </script>
 
@@ -56,19 +73,20 @@ form {
   padding: 40px;
   border-radius: 10px;
 }
-label{
+label {
   color: #aaa;
   display: inline-block;
   margin: 25px 0 14px;
-  font-size:0.6em;
+  font-size: 0.6em;
   text-transform: uppercase;
-  letter-spacing:1px;
+  letter-spacing: 1px;
   font-weight: bold;
 }
-input, select {
+input,
+select {
   display: block;
-  padding:10px 6px;
-  width:100%;
+  padding: 10px 6px;
+  width: 100%;
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid #ddd;
@@ -76,8 +94,8 @@ input, select {
 }
 input[type="checkbox"] {
   display: inline-block;
-  width:16px;
-  margin:0 10px 0 0;
+  width: 16px;
+  margin: 0 10px 0 0;
   position: relative;
   top: 2px;
 }
